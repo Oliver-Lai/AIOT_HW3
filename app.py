@@ -386,18 +386,20 @@ def main():
     
     with col1:
         if st.button("📨 Example Ham (Legitimate)", use_container_width=True):
-            st.session_state.example_text = "Hi! Are you free for lunch today? Let me know what time works for you."
+            st.session_state.user_message = "Hi! Are you free for lunch today? Let me know what time works for you."
+            st.rerun()
     
     with col2:
         if st.button("🚨 Example Spam (Junk)", use_container_width=True):
-            st.session_state.example_text = "WINNER!! You have been selected to receive a £1000 cash prize! Call 09061701461 now to claim. Valid 12 hours only!"
+            st.session_state.user_message = "WINNER!! You have been selected to receive a £1000 cash prize! Call 09061701461 now to claim. Valid 12 hours only!"
+            st.rerun()
     
     # Input section
     st.markdown("---")
     st.markdown("### ✍️ Enter Your Message")
     
-    # Get initial text (from example or empty)
-    initial_text = st.session_state.get('example_text', '')
+    # Get initial text (from session state or empty)
+    initial_text = st.session_state.get('user_message', '')
     
     # Text input area
     user_message = st.text_area(
@@ -405,12 +407,12 @@ def main():
         value=initial_text,
         height=120,
         placeholder="Enter your SMS message here...\n\nExample: 'Free entry in 2 a wkly comp to win FA Cup final tkts'",
-        help="Enter any SMS message to check if it's spam or legitimate (ham)"
+        help="Enter any SMS message to check if it's spam or legitimate (ham)",
+        key="message_input"
     )
     
-    # Clear example text after it's been used
-    if 'example_text' in st.session_state:
-        del st.session_state.example_text
+    # Update session state with current message
+    st.session_state.user_message = user_message
     
     # Character count
     char_count = len(user_message)
