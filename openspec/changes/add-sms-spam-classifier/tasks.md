@@ -35,18 +35,18 @@
 - [x] 4.7 Verify confidence scores are displayed correctly (0-100%)
 
 ## 5. Documentation
-- [ ] 5.1 Create README.md with project overview
-- [ ] 5.2 Document installation steps (pip install requirements)
-- [ ] 5.3 Document how to train the model (`python train.py`)
-- [ ] 5.4 Document how to run the web app (`streamlit run app.py`)
-- [ ] 5.5 Add example usage screenshots or descriptions
-- [ ] 5.6 Document known limitations (SMS-only, dataset-specific)
+- [x] 5.1 Create README.md with project overview
+- [x] 5.2 Document installation steps (pip install requirements)
+- [x] 5.3 Document how to train the model (`python train.py`)
+- [x] 5.4 Document how to run the web app (`streamlit run app.py`)
+- [x] 5.5 Add example usage screenshots or descriptions
+- [x] 5.6 Document known limitations (SMS-only, dataset-specific)
 
 ## 6. Deployment Preparation
-- [ ] 6.1 Verify all files are committed to Git
-- [ ] 6.2 Test local deployment end-to-end
-- [ ] 6.3 Prepare for Streamlit Community Cloud deployment (if applicable)
-- [ ] 6.4 Document deployment steps in README.md
+- [x] 6.1 Verify all files are committed to Git
+- [x] 6.2 Test local deployment end-to-end
+- [x] 6.3 Prepare for Streamlit Community Cloud deployment (if applicable)
+- [x] 6.4 Document deployment steps in README.md
 
 ## Dependencies Between Tasks
 - Task 3 (Web Interface) depends on Task 2 (Model Training) completing first
