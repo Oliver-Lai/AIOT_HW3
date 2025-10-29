@@ -382,37 +382,35 @@ def main():
     st.markdown("### 💡 Try Example Messages")
     st.markdown("Click a button below to load an example message:")
     
+    # Initialize session state for message if not exists
+    if 'message_text' not in st.session_state:
+        st.session_state.message_text = ""
+    
     col1, col2 = st.columns(2)
     
     with col1:
         if st.button("📨 Example Ham (Legitimate)", use_container_width=True):
-            st.session_state.user_message = "Hi! Are you free for lunch today? Let me know what time works for you."
-            st.rerun()
+            st.session_state.message_text = "Hi! Are you free for lunch today? Let me know what time works for you."
     
     with col2:
         if st.button("🚨 Example Spam (Junk)", use_container_width=True):
-            st.session_state.user_message = "WINNER!! You have been selected to receive a £1000 cash prize! Call 09061701461 now to claim. Valid 12 hours only!"
-            st.rerun()
+            st.session_state.message_text = "WINNER!! You have been selected to receive a £1000 cash prize! Call 09061701461 now to claim. Valid 12 hours only!"
     
     # Input section
     st.markdown("---")
     st.markdown("### ✍️ Enter Your Message")
     
-    # Get initial text (from session state or empty)
-    initial_text = st.session_state.get('user_message', '')
-    
-    # Text input area
+    # Text input area - use session state directly as key
     user_message = st.text_area(
         label="Type or paste an SMS message to classify:",
-        value=initial_text,
+        value=st.session_state.message_text,
         height=120,
         placeholder="Enter your SMS message here...\n\nExample: 'Free entry in 2 a wkly comp to win FA Cup final tkts'",
-        help="Enter any SMS message to check if it's spam or legitimate (ham)",
-        key="message_input"
+        help="Enter any SMS message to check if it's spam or legitimate (ham)"
     )
     
-    # Update session state with current message
-    st.session_state.user_message = user_message
+    # Update session state when user types
+    st.session_state.message_text = user_message
     
     # Character count
     char_count = len(user_message)
